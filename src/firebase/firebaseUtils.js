@@ -6,6 +6,7 @@ import "firebase/compat/auth"
 const { REACT_APP_FIREBASE_API_KEY, REACT_APP_FIREBASE_AUTH_DOMAIN, REACT_APP_FIREBASE_PROJECT_ID, REACT_APP_FIREBASE_STORAGE_BUCKET, REACT_APP_FIREBASE_MESSAGING_SENDER_ID, REACT_APP_FIREBASE_APP_ID, REACT_APP_FIREBASE_MEASUREMEMT_ID } = process.env;
 
 // Firebase Configuration Object
+// The firebaseConfig object stores the API keys into several local variables that can be easily referenced through out the script.
 const firebaseConfig = {
     apiKey: REACT_APP_FIREBASE_API_KEY,
     authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
