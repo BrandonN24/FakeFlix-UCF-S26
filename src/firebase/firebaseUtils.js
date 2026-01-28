@@ -17,15 +17,29 @@ const firebaseConfig = {
     measurementId: REACT_APP_FIREBASE_MEASUREMEMT_ID
 }
 
+// createUserProfile Document
+// asynchronous function
+// in: user authentication data (userAuth), additionalData
+// out: user reference document (userRef) - type: firebase.firestore.DocumentReference
 export const createUserProfileDocument = async (userAuth, additionalData) => {
+    // if the userAuth data is null then exit.
     if (!userAuth) return;
 
+    // obtains the user reference value from the userAuth.uid number.
     const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+    // attempt to see if existing data exists for this user reference value.
     const snapShot = await userRef.get();
 
+    // if no existing data exists from the userAuth.uid number, create a new user.
     if (!snapShot.exists) {
+        // fills the displayName, email, and photoURL vars with the data present in userAuth.
         const { displayName, email, photoURL } = userAuth;
+
+        // stores the date that this data was created.
         const createdAt = new Date();
+
+        // attempt to update the user reference document with the new data obtained from userAuth.
         try {
             await userRef.set({
                 displayName,
@@ -39,6 +53,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         }
     }
 
+    // return the user reference document
     return userRef;
 }
 
