@@ -17,7 +17,7 @@ const firebaseConfig = {
     measurementId: REACT_APP_FIREBASE_MEASUREMEMT_ID
 }
 
-// createUserProfile Document
+// createUserProfileDocument
 // asynchronous function
 // in: user authentication data (userAuth), additionalData
 // out: user reference document (userRef) - type: firebase.firestore.DocumentReference
@@ -67,9 +67,11 @@ export const getCurrentUser = () => {
 }
 
 // Firebase web app init
+// creates and initializes a Firebase app instance using the API keys that were stored in firebaseConfig.
 firebase.initializeApp(firebaseConfig)
-
+// gets the authentication service for the app.
 export const auth = firebase.auth()
+// gets an initialization of the firebase document database entry point (firestore)
 export const firestore = firebase.firestore()
 
 // Sign in With Google Setup with popup
