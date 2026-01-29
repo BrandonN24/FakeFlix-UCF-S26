@@ -74,9 +74,14 @@ export const auth = firebase.auth()
 // gets an initialization of the firebase document database entry point (firestore)
 export const firestore = firebase.firestore()
 
-// Sign in With Google Setup with popup
+// Sign in With Google Setup with popup - creates GoogleAuthProvider instance
 export const googleProvider = new firebase.auth.GoogleAuthProvider()
+
+// sets a prompt in the popup to select an account.
 googleProvider.setCustomParameters({ prompt: "select_account" })
+
+// signInWithGoogle
+// Initiates a Google OAuth sign‑in flow using a popup and returns a Promise that resolves with the Firebase Auth result.
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
 
 export default firebase
