@@ -2,6 +2,12 @@ import firebase from "firebase/compat/app"
 import "firebase/compat/firestore"
 import "firebase/compat/auth"
 
+/* 
+    firebaseUtil.js provides several utility / helper functions for the Firebase DB,
+    initializes the Firebase web app and entry point for interfacing the DB,
+    and implements Google OAuth Sign-On
+*/
+
 // Parsing the environment variable keys from the .env and storing them in local constant vars.
 const { REACT_APP_FIREBASE_API_KEY, REACT_APP_FIREBASE_AUTH_DOMAIN, REACT_APP_FIREBASE_PROJECT_ID, REACT_APP_FIREBASE_STORAGE_BUCKET, REACT_APP_FIREBASE_MESSAGING_SENDER_ID, REACT_APP_FIREBASE_APP_ID, REACT_APP_FIREBASE_MEASUREMEMT_ID } = process.env;
 
