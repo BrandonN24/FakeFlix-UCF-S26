@@ -57,12 +57,17 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     return userRef;
 }
 
+// getCurrentUser
+// in: None
+// out: Promise that resolves with the current Firebase Auth user
+// Internally attaches a one-time onAuthStateChanged listener, then immediately
+// unsubscribes after the first auth state is received.
 export const getCurrentUser = () => {
     return new Promise((resolve, reject) => {
         const unsubscribe = auth.onAuthStateChanged(userAuth => {
-            unsubscribe();
-            resolve(userAuth);
-        }, reject);
+            unsubscribe();      // remove listener after first invocation
+            resolve(userAuth);  // resolve with the current user (or null)
+        }, reject);             // reject if Firebase throws an auth error
     });
 }
 
